@@ -9,6 +9,7 @@ public class WeightedLevenshteinTest {
     @Test
     public void testDistance() {
         WeightedLevenshtein instance = new WeightedLevenshtein(new CharacterSubstitutionInterface() {
+            @Override
             public double cost(char c1, char c2) {
                 // The cost for substituting 't' and 'r' is considered
                 // smaller as these 2 are located next to each other
@@ -47,6 +48,7 @@ public class WeightedLevenshteinTest {
     public void testDistanceCharacterInsDelInterface() {
         WeightedLevenshtein instance = new WeightedLevenshtein(
                 new CharacterSubstitutionInterface() {
+            @Override
             public double cost(char c1, char c2) {
                 if (c1 == 't' && c2 == 'r') {
                     return 0.5;
@@ -55,6 +57,7 @@ public class WeightedLevenshteinTest {
             }
         },
         new CharacterInsDelInterface() {
+            @Override
             public double deletionCost(char c) {
                 if (c == 'i') {
                     return 0.8;
@@ -62,6 +65,7 @@ public class WeightedLevenshteinTest {
                 return 1.0;
             }
 
+            @Override
             public double insertionCost(char c) {
                 if (c == 'i') {
                     return 0.5;

@@ -34,7 +34,7 @@ import net.jcip.annotations.Immutable;
 /**
  * Similar to Jaccard index, but this time the similarity is computed as 2 * |V1
  * inter V2| / (|V1| + |V2|). Distance is computed as 1 - cosine similarity.
- *
+ * 与Jaccard索引相似，但是这次相似度计算为2 * | V1 inter V2 | /（| V1 | + | V2 |）。距离计算为1-余弦相似度。
  * @author Thibault Debatty
  */
 @Immutable
@@ -77,6 +77,7 @@ public class SorensenDice extends ShingleBased implements
      * @return The computed Sorensen-Dice similarity.
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double similarity(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");
@@ -116,6 +117,7 @@ public class SorensenDice extends ShingleBased implements
      * @return 1.0 - the computed similarity
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         return 1 - similarity(s1, s2);
     }

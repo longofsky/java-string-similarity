@@ -35,6 +35,10 @@ import net.jcip.annotations.Immutable;
  * strings equal under the condition that no substring is edited more than once,
  * whereas Damerau-Levenshtein presents no such restriction.
  *
+ * Damerau-Levenshtein距离的“最佳字符串对齐”（有时称为“限制编辑距离”）变体的实现。
+ * 两种算法之间的区别在于，最优字符串对齐算法计算在使子字符串不被编辑超过一次的条件下使字符串相等所需的编辑操作次数，
+ * 而Damerau-Levenshtein则不提供这样的编辑操作限制
+ *
  * @author Michail Bogdanos
  */
 @Immutable
@@ -51,6 +55,7 @@ public final class OptimalStringAlignment implements StringDistance {
      * @return the OSA distance
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public double distance(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");

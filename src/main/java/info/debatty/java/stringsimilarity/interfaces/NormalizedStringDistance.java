@@ -24,7 +24,8 @@
 package info.debatty.java.stringsimilarity.interfaces;
 
 /**
- * Normalized string similarities return a similarity between 0.0 and 1.0.
+ * Normalized string similarities return a distance between 0.0 and 1.0.
+ * 归一化的字符串相似度返回0.0到1.0之间的距离 越小表示 字符串越相似
  *
  * @author Thibault Debatty
  */

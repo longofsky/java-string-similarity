@@ -28,6 +28,7 @@ import java.util.Map;
 
 /**
  * Example of computing cosine similarity with pre-computed profiles.
+ * 用预先计算的轮廓计算余弦相似度的示例
  *
  * @author Thibault Debatty
  */

@@ -32,6 +32,7 @@ import net.jcip.annotations.Immutable;
  * the longest string. The resulting value is always in the interval [0.0 1.0]
  * but it is not a metric anymore! The similarity is computed as 1 - normalized
  * distance.
+ * 该距离的计算方式为levenshtein距离除以*最长字符串的长度。结果值始终在[0.0 1.0] 范围内，但不再是度量标准！相似度计算为1-标准化距离
  *
  * @author Thibault Debatty
  */
@@ -48,6 +49,7 @@ public class NormalizedLevenshtein implements
      * @return The computed distance in the range [0, 1]
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
 
         if (s1 == null) {
@@ -78,6 +80,7 @@ public class NormalizedLevenshtein implements
      * @return 1.0 - the computed distance
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double similarity(final String s1, final String s2) {
         return 1.0 - distance(s1, s2);
     }

@@ -41,6 +41,12 @@ import net.jcip.annotations.Immutable;
  * the cardinality of each n-gram is not taken into account.
  * Distance is computed as 1 - cosine similarity.
  * Jaccard index is a metric distance.
+ *
+ * 每个输入字符串都转换为一组n-gram，Jaccard索引
+ * 然后计算为| V1 inter V2 | / | V1联合V2 |。 像Q-Gram距离一样，首先将输入字符串转换成 n-gram（n个字符的序列，也称为k-shingles）的集合，
+ * 但是这次不考虑每个n-gram的基数。 距离计算为1-余弦相似度。
+ * Jaccard指数是公制距离
+ *
  * @author Thibault Debatty
  */
 @Immutable
@@ -75,6 +81,7 @@ public class Jaccard extends ShingleBased implements
      * @return The Jaccard index in the range [0, 1]
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double similarity(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");
@@ -110,6 +117,7 @@ public class Jaccard extends ShingleBased implements
      * @return 1 - the Jaccard similarity.
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         return 1.0 - similarity(s1, s2);
     }

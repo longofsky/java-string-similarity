@@ -16,6 +16,9 @@ import net.jcip.annotations.Immutable;
  * Levenshtein distance, but can be computed in O(m + n), where Levenshtein
  * requires O(m.n).
  *
+ * 由Ukkonen在“带有q-grams和最大匹配项的近似字符串匹配”中定义的Q-gram距离。两个字符串之间的距离定义为它们的轮廓差异的L1范数（每个n-gram出现的次数）：SUM（| V1_i-V2_i |）。
+ * Q-gram距离是  Levenshtein距离的下限，但可以用O（m + n）计算，其中Levenshtein 需要O（m.n）
+ *
  * @author Thibault Debatty
  */
 @Immutable
@@ -24,11 +27,14 @@ public class QGram extends ShingleBased implements StringDistance {
     /**
      * Q-gram similarity and distance. Defined by Ukkonen in "Approximate
      * string-matching with q-grams and maximal matches",
+     * Q-gram相似度和距离。由Ukkonen在“与q-gram和最大匹配项的近似*字符串匹配”中定义
      * http://www.sciencedirect.com/science/article/pii/0304397592901434 The
      * distance between two strings is defined as the L1 norm of the difference
      * of their profiles (the number of occurences of each k-shingle). Q-gram
      * distance is a lower bound on Levenshtein distance, but can be computed in
      * O(|A| + |B|), where Levenshtein requires O(|A|.|B|)
+     * 两个字符串之间的距离定义为它们的轮廓之差（每个k形阴影的出现次数）的L1范数。
+     * Q-gram 距离是Levenshtein距离的下限，但是可以用*O（| A | + | B |）计算，其中Levenshtein需要O（| A |。| B |）
      *
      * @param k
      */
@@ -36,16 +42,6 @@ public class QGram extends ShingleBased implements StringDistance {
         super(k);
     }
 
-    /**
-     * Q-gram similarity and distance. Defined by Ukkonen in "Approximate
-     * string-matching with q-grams and maximal matches",
-     * http://www.sciencedirect.com/science/article/pii/0304397592901434 The
-     * distance between two strings is defined as the L1 norm of the difference
-     * of their profiles (the number of occurence of each k-shingle). Q-gram
-     * distance is a lower bound on Levenshtein distance, but can be computed in
-     * O(|A| + |B|), where Levenshtein requires O(|A|.|B|)
-     * Default k is 3.
-     */
     public QGram() {
         super();
     }
@@ -53,12 +49,13 @@ public class QGram extends ShingleBased implements StringDistance {
     /**
      * The distance between two strings is defined as the L1 norm of the
      * difference of their profiles (the number of occurence of each k-shingle).
-     *
+     * 两根弦之间的距离定义为它们的轮廓的差的L1范数（每个k形木片的出现次数）
      * @param s1 The first string to compare.
      * @param s2 The second string to compare.
      * @return The computed Q-gram distance.
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");
@@ -80,6 +77,7 @@ public class QGram extends ShingleBased implements StringDistance {
 
     /**
      * Compute QGram distance using precomputed profiles.
+     * 使用预先计算的配置文件计算QGram距离。
      *
      * @param profile1
      * @param profile2

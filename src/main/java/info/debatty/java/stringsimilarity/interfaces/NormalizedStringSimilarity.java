@@ -25,6 +25,7 @@ package info.debatty.java.stringsimilarity.interfaces;
 
 /**
  *
+ * 归一化的字符串相似度返回0.0到1.0之间的相似度，值越大表示越相似
  * @author Thibault Debatty
  */
 public interface NormalizedStringSimilarity extends StringSimilarity {

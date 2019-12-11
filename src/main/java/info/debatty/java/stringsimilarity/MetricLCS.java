@@ -32,11 +32,12 @@ import net.jcip.annotations.Immutable;
  * Distance metric based on Longest Common Subsequence, from the notes "An
  * LCS-based string metric" by Daniel Bakkelund.
  *
+ * 基于最长公共子序列的距离度量
+ *
  * @author Thibault Debatty
  */
 @Immutable
-public class MetricLCS
-        implements MetricStringDistance, NormalizedStringDistance {
+public class MetricLCS implements MetricStringDistance, NormalizedStringDistance {
 
     private final LongestCommonSubsequence lcs = new LongestCommonSubsequence();
 
@@ -49,6 +50,7 @@ public class MetricLCS
      * @return The computed distance metric value.
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");

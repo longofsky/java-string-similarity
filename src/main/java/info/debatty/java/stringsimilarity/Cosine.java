@@ -30,9 +30,7 @@ import java.util.Map;
 import net.jcip.annotations.Immutable;
 
 /**
- * The similarity between the two strings is the cosine of the angle between
- * these two vectors representation. It is computed as V1 . V2 / (|V1| * |V2|)
- * The cosine distance is computed as 1 - cosine similarity.
+ * 两个字符串之间的相似度是这两个向量表示之间的角度的余弦值。计算为V1。 V2 /（| V1 | * | V2 |）余弦距离计算为1-余弦相似度
  *
  * @author Thibault Debatty
  */
@@ -46,6 +44,9 @@ public class Cosine extends ShingleBased implements
      * characters). In this n-dimensional space, the similarity between the two
      * strings is the cosine of their respective vectors.
      *
+     * 实现字符串之间的余弦相似性。首先是字符串
+     * 转换成k-shingles(k-的序列)的向量字符)。在这个n维空间中，两者之间的相似性弦是它们各自向量的余弦。
+     *
      * @param k
      */
     public Cosine(final int k) {
@@ -57,6 +58,7 @@ public class Cosine extends ShingleBased implements
      * transformed in vectors of occurrences of k-shingles (sequences of k
      * characters). In this n-dimensional space, the similarity between the two
      * strings is the cosine of their respective vectors. Default k is 3.
+     * 实现字符串之间的余弦相似度。首先将字符串转换为k-shingles（k个字符的序列）的出现向量。在这个n维空间中，两个字符串之间的相似度是它们各自向量的余弦值。默认值k为3
      */
     public Cosine() {
         super();
@@ -70,6 +72,7 @@ public class Cosine extends ShingleBased implements
      * @return The cosine similarity in the range [0, 1]
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double similarity(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");
@@ -142,6 +145,7 @@ public class Cosine extends ShingleBased implements
      * @return 1.0 - the cosine similarity in the range [0, 1]
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         return 1.0 - similarity(s1, s2);
     }

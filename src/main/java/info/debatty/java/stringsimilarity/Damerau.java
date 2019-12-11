@@ -40,6 +40,11 @@ import net.jcip.annotations.Immutable;
  * This is not to be confused with the optimal string alignment distance, which
  * is an extension where no substring can be edited more than once.
  *
+ * 通过换位实现Damerau-Levenshtein距离（也有时称为无限制Damerau-Levenshtein距离）。
+ * 这是将一个字符串转换为另一个字符串所需的最少操作数，其中一个操作定义为单个字符的插入，删除或替换，或两个相邻字符的换位。
+ * 它确实考虑了三角形不等式，因此是公制距离。
+ * 请勿将其与最佳字符串对齐距离相混淆，后者是
+ * 扩展，其中子字符串不能被多次编辑
  * @author Thibault Debatty
  */
 @Immutable
@@ -55,6 +60,7 @@ public class Damerau implements MetricStringDistance {
      * @return The computed distance.
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
 
         if (s1 == null) {

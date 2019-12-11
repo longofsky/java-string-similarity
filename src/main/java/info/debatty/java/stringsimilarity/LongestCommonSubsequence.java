@@ -21,6 +21,13 @@ import net.jcip.annotations.Immutable;
  * ! This class currently implements the dynamic programming approach, which has
  * a space requirement O(m * n)!
  *
+ * 最长公共子序列（LCS）问题在于找到两个（或更多）序列公共的最长*子序列。
+ * 它不同于查找公共子字符串的问题：与子字符串不同，不需要子序列占据原始序列中的连续位置。
+ * 它由diff实用程序，Git用于协调多个更改等。字符串X（长度n）和Y（长度m）之间的LCS距离为n + m-2
+ * | LCS（X，Y ）| min = 0 max = n + m
+ * LCS距离等于Levenshtein距离，仅允许插入和删除（不允许替换），或者替换成本是插入或删除成本的两倍时。
+ * ！此类当前实现了动态编程方法，该方法具有空间要求O（m * n）！
+ *
  * @author Thibault Debatty
  */
 @Immutable
@@ -36,6 +43,7 @@ public class LongestCommonSubsequence implements StringDistance {
      * |s2| - 2 * |LCS(s1, s2)|
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");

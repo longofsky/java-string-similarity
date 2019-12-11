@@ -48,6 +48,14 @@ import java.util.regex.Pattern;
  * documents like e-mails, k = 5 is a recommended value. For large documents,
  * such as research articles, k = 9 is considered a safe choice.
  *
+ * 抽象类，用于依赖于集合操作(比如余弦相似度或jaccard指数)。
+ *k-shingling是将字符串(或文本文档)转换为一组n-g，可以用来衡量两者之间的相似性字符串或文件。
+ *
+ * 一般来说，k-gram是k个标记的任意序列。我们在这里使用定义来自Leskovec, Rajaraman &乌尔曼(2014)，“大规模采矿”《数据集》，剑桥大学出版社:多个后续空间
+ * 用一个空格代替，k-gram是由k个字符组成的序列。
+ *
+ *k的默认值是3。一个好的经验法则是想象有只有20个字符，估计有20^k个木瓦。对小像e-mail这样的文档，k = 5是推荐值。对于大文件,
+ * 例如研究文章，k = 9被认为是一个安全的选择
  * @author Thibault Debatty
  */
 @Immutable
@@ -98,6 +106,8 @@ public abstract class ShingleBased {
      * Jaccard index, etc. Pay attention: the memory requirement of the profile
      * can be up to k * size of the string
      *
+     *计算并返回由Ukkonen“近似”定义的s的轮廓字符串匹配与q-gram和最大匹配”。
+     *个人资料是电话号码 ，并用于计算q-gram相似度，Jaccard指数等。注意:配置文件的内存需求 可达k *大小的字符串
      * @param string
      * @return the profile of this string, as an unmodifiable Map
      */

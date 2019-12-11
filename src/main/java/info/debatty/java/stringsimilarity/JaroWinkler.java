@@ -15,6 +15,10 @@ import net.jcip.annotations.Immutable;
  * Jaro-Winkler was developed in the area of record linkage (duplicate
  * detection) (Winkler, 1990). It returns a value in the interval [0.0, 1.0].
  * The distance is computed as 1 - Jaro-Winkler similarity.
+ *
+ * Jaro-Winkler距离度量标准是为最短*字符串（例如人名）和错别字而设计的； （大致上）是Damerau-Levenshtein的一个变体，
+ * 其中2个近字符的替换被认为不如2个字符的替换重要得多。 Jaro-Winkler在记录链接（重复检测）领域得到发展（Winkler，1990）。
+ * 它返回间隔为[0.0，1.0]的值。 距离计算为1-Jaro-Winkler相似度
  * @author Thibault Debatty
  */
 @Immutable
@@ -61,6 +65,7 @@ public class JaroWinkler
      * @return The Jaro-Winkler similarity in the range [0, 1]
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double similarity(final String s1, final String s2) {
         if (s1 == null) {
             throw new NullPointerException("s1 must not be null");
@@ -97,6 +102,7 @@ public class JaroWinkler
      * @return 1 - similarity.
      * @throws NullPointerException if s1 or s2 is null.
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         return 1.0 - similarity(s1, s2);
     }

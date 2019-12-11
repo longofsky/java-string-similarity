@@ -47,7 +47,7 @@ public class Examples {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Levenshtein
+        // Levenshtein 越小表示越相似，受字符串长度影响
         // ===========
         System.out.println("\nLevenshtein");
         Levenshtein levenshtein = new Levenshtein();
@@ -149,7 +149,7 @@ public class Examples {
         NGram ngram = new NGram(4);
         System.out.println(ngram.distance(s1, s2));
 
-        // Normalized Levenshtein
+        // Normalized Levenshtein 越小越相似，1.0表示完全不相似
         // ======================
         System.out.println("\nNormalized Levenshtein");
         NormalizedLevenshtein l = new NormalizedLevenshtein();
@@ -158,7 +158,7 @@ public class Examples {
         System.out.println(l.distance("My string", "M string2"));
         System.out.println(l.distance("My string", "abcd"));
 
-        // QGram
+        // QGram 越小越相似 得分大小受 字符串长度影响，字符串越长 得分越大
         // =====
         System.out.println("\nQGram");
         QGram dig = new QGram(2);
@@ -186,18 +186,19 @@ public class Examples {
         // => 2 x 3 / (4 + 5) = 6/9 = 0.6666
         System.out.println(sd.similarity("ABCDE", "ABCDFG"));
 
-        // Weighted Levenshtein
+        // Weighted Levenshtein 越小表示越相似，受字符串长度影响 可以设置替换字符权重
         // ====================
         System.out.println("\nWeighted Levenshtein");
         WeightedLevenshtein wl = new WeightedLevenshtein(
                 new CharacterSubstitutionInterface() {
+                    @Override
                     public double cost(char c1, char c2) {
 
                         // The cost for substituting 't' and 'r' is considered
                         // smaller as these 2 are located next to each other
                         // on a keyboard
                         if (c1 == 't' && c2 == 'r') {
-                            return 0.5;
+                            return 0;
                         }
 
                         // For most cases, the cost of substituting 2 characters

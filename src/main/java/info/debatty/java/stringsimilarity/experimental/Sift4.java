@@ -33,6 +33,8 @@ import java.util.LinkedList;
  * https://siderite.blogspot.com/2014/11/super-fast-and-accurate-string-
  * distance.html
  *
+ * Sift4-受JaroWinkler 和Longest Common Subsequence启发的通用字符串距离算法
+ *
  * @author Thibault Debatty
  */
 public class Sift4 implements StringDistance {
@@ -62,6 +64,7 @@ public class Sift4 implements StringDistance {
      * @param s2
      * @return
      */
+    @Override
     public final double distance(final String s1, final String s2) {
 
         /**

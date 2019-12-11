@@ -30,6 +30,8 @@ import net.jcip.annotations.Immutable;
  * Implementation of Levenshtein that allows to define different weights for
  * different character substitutions.
  *
+ * Levenshtein的实现允许为不同的字符替换定义不同的权重
+ *
  * @author Thibault Debatty
  */
 @Immutable
@@ -40,6 +42,8 @@ public class WeightedLevenshtein implements StringDistance {
 
     /**
      * Instantiate with provided character substitution.
+     *
+     * 用提供的字符替换实例化
      * @param charsub The strategy to determine character substitution weights.
      */
     public WeightedLevenshtein(final CharacterSubstitutionInterface charsub) {
@@ -62,12 +66,14 @@ public class WeightedLevenshtein implements StringDistance {
     /**
      * Equivalent to distance(s1, s2, Double.MAX_VALUE).
      */
+    @Override
     public final double distance(final String s1, final String s2) {
         return distance(s1, s2, Double.MAX_VALUE);
     }
 
     /**
      * Compute Levenshtein distance using provided weights for substitution.
+     * 使用提供的权重来计算Levenshtein距离
      * @param s1 The first string to compare.
      * @param s2 The second string to compare.
      * @param limit The maximum result to compute before stopping. This
@@ -75,7 +81,10 @@ public class WeightedLevenshtein implements StringDistance {
      *              only care about strings with a certain similarity.
      *              Set this to Double.MAX_VALUE if you want to run the
      *              calculation to completion in every case.
+     *              停止前要计算的最大结果。这表示如果您只在乎具有相似性的字符串，则计算可以提前终止。
+     *              如果要在所有情况下都执行*计算以将其设置为Double.MAX_VALUE。
      * @return The computed weighted Levenshtein distance.
+     *
      * @throws NullPointerException if s1 or s2 is null.
      */
     public final double distance(final String s1, final String s2,

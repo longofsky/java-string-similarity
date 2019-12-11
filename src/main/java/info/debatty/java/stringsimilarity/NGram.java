@@ -6,11 +6,13 @@ import net.jcip.annotations.Immutable;
 /**
  * N-Gram Similarity as defined by Kondrak, "N-Gram Similarity and Distance",
  * String Processing and Information Retrieval, Lecture Notes in Computer
+ * Kondrak定义的N-Gram相似度，“ N-Gram相似度和距离”，字符串处理和信息检索，计算机讲义
  * Science Volume 3772, 2005, pp 115-126.
  *
  * The algorithm uses affixing with special character '\n' to increase the
  * weight of first characters. The normalization is achieved by dividing the
  * total similarity score the original length of the longest word.
+ * 该算法使用带有特殊字符'\ n'的粘贴来增加第一个字符的权重。通过将总相似度得分除以最长单词的原始长度来实现归一化
  *
  * http://webdocs.cs.ualberta.ca/~kondrak/papers/spire05.pdf
  */
@@ -42,6 +44,7 @@ public class NGram implements NormalizedStringDistance {
      * @return The computed n-gram distance in the range [0, 1]
      * @throws NullPointerException if s0 or s1 is null.
      */
+    @Override
     public final double distance(final String s0, final String s1) {
         if (s0 == null) {
             throw new NullPointerException("s0 must not be null");

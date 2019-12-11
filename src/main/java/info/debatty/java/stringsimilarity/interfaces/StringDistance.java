@@ -26,7 +26,7 @@ package info.debatty.java.stringsimilarity.interfaces;
 import java.io.Serializable;
 
 /**
- *
+ *字符串的距离，值越小表示越相似
  * @author Thibault Debatty
  */
 public interface StringDistance extends Serializable {

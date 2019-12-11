@@ -3,7 +3,7 @@ package info.debatty.java.stringsimilarity.interfaces;
 import java.io.Serializable;
 
 /**
- *
+ *字符串的相似度，越大表示越相似
  * @author Thibault Debatty
  */
 public interface StringSimilarity extends Serializable {

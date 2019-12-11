@@ -5,6 +5,7 @@ package info.debatty.java.stringsimilarity;
  * As an adjunct to CharacterSubstitutionInterface, this interface
  * allows you to specify the cost of deletion or insertion of a
  * character.
+ * 作为CharacterSubstitutionInterface的辅助，此接口允许您指定删除或插入字符的费用 结合权重使用
  */
 public interface CharacterInsDelInterface {
     /**

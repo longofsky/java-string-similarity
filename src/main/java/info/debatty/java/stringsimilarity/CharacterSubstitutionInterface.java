@@ -26,17 +26,22 @@ package info.debatty.java.stringsimilarity;
 
 /**
  * Used to indicate the cost of character substitution.
+ * 用于指示字符替换的成本
  *
  * Cost should always be in [0.0 .. 1.0]
  * For example, in an OCR application, cost('o', 'a') could be 0.4
  * In a checkspelling application, cost('u', 'i') could be 0.4 because these are
  * next to each other on the keyboard...
+ * 费用应始终为[0.0 .. 1.0] 、
+ * 例如，在OCR应用程序中，cost（'o'，'a'）可以为0.4
+ * 在拼写检查应用程序中，cost（'u'，'i'）可以为0.4，因为这些在键盘上彼此相邻
  *
  * @author Thibault Debatty
  */
 public interface CharacterSubstitutionInterface {
     /**
      * Indicate the cost of substitution c1 and c2.
+     * 指出替代成本c1和c2
      * @param c1 The first character of the substitution.
      * @param c2 The second character of the substitution.
      * @return The cost in the range [0, 1].
